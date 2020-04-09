@@ -13,16 +13,17 @@ def main():
 
 def find_palingrams(word_list):
     palingram_list = []
-    for word in word_list:
+    words = set(word_list)
+    for word in words:
         last_letter_index = len(word)
         reversed_word = word[::-1]
         if last_letter_index > 1:
             for i in range(last_letter_index):
                 if word[i:] == reversed_word[:last_letter_index-i] and \
-                  reversed_word[last_letter_index-i:] in word_list:
+                  reversed_word[last_letter_index-i:] in words:
                     palingram_list.append((word,reversed_word[last_letter_index-i:]))
                 if word[:i] == reversed_word[last_letter_index-i:] and \
-                  reversed_word[:last_letter_index-i] in word_list:
+                  reversed_word[:last_letter_index-i] in words:
                     palingram_list.append((reversed_word[:last_letter_index-i],word))
 
     return palingram_list

@@ -20,7 +20,7 @@ def load(file):
     try:
         with open(file, 'r') as words_list:
             loaded_txt = words_list.read().strip().split("\n")
-            loaded_txt = [word.lower() for word in loaded_txt]
+            loaded_txt = [word.lower() for word in loaded_txt if len(word) > 1]
             return loaded_txt
     except IOError as error_message:
         print("{}\nError loading {}. Terminating program.".format(
